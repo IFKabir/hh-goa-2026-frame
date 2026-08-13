@@ -122,13 +122,13 @@ body {
     z-index: 0;   /* bottom-most layer */
     overflow: hidden;
     pointer-events: none;
-    background: url('bg-cyber-goa.jpg') center center / cover no-repeat;
+    background: url('assets/bg-cyber-goa.jpg') center center / cover no-repeat;
     transition: background 0.3s ease;
 }
 
 @media (max-width: 768px), (max-aspect-ratio: 1/1) {
     .house-bg-layer {
-        background: url('bg-cyber-goa-mobile.png') center center / cover no-repeat;
+        background: url('assets/bg-cyber-goa.jpg') center center / cover no-repeat;
     }
 }
 
