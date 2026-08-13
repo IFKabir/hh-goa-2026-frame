@@ -44,7 +44,7 @@
   const zoomControls = document.getElementById('zoomControls');
   const zoomHint = document.getElementById('zoomHint');
   const overlayContainer = document.getElementById('overlayInputs');
-  const actionsWrap = document.querySelector('.actions');
+  const generatorLayout = document.querySelector('.generator-layout');
   
   // Set initial random values
   let generatedId = "HH26-" + Math.floor(100 + Math.random()*899);
@@ -117,13 +117,11 @@
         imgNaturalH = img.naturalHeight;
         resetTransform();
         loadingOverlay.classList.remove('show');
-        if (canvasWrap) canvasWrap.style.display = 'block';
-        if (emptyPreview) emptyPreview.style.display = 'none';
+        if (generatorLayout) generatorLayout.classList.remove('initial-state');
         
         // Show zoom controls
         if(zoomControls) zoomControls.style.display = 'flex';
         if(zoomHint) zoomHint.style.display = 'block';
-        if(actionsWrap) actionsWrap.style.display = 'grid';
 
         // Enable buttons
         downloadBtn.disabled = false;
@@ -170,12 +168,10 @@
   function resetUI(){
     fileInput.value = '';
     sourceImage = null;
-    if (canvasWrap) canvasWrap.style.display = 'none';
-    if (emptyPreview) emptyPreview.style.display = 'flex';
+    if (generatorLayout) generatorLayout.classList.add('initial-state');
     if(zoomControls) zoomControls.style.display = 'none';
     if(zoomHint) zoomHint.style.display = 'none';
     if(overlayContainer) overlayContainer.style.display = 'none';
-    if(actionsWrap) actionsWrap.style.display = 'none';
     downloadBtn.disabled = true;
     shareBtn.disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -495,13 +491,15 @@
       ctx.font = `600 12px 'Plus Jakarta Sans', sans-serif`;
       ctx.fillText(f.label, rx, f.y - 25);
       
-      // Value
-      ctx.fillStyle = f.color;
-      ctx.font = f.label === 'NAME' ? `700 24px 'Plus Jakarta Sans', sans-serif` : 
-                 f.label === 'BUILDER ID' ? `600 24px 'Plus Jakarta Sans', sans-serif` :
-                 f.label === 'STACK' ? `600 18px 'Plus Jakarta Sans', sans-serif` :
-                 `700 20px 'Plus Jakarta Sans', sans-serif`;
-      ctx.fillText(f.value.toUpperCase(), rx, f.y);
+      // Value (Only draw during export to allow perfect direct-typing over inputs)
+      if (window.isExporting || isPFPMode) {
+        ctx.fillStyle = f.color;
+        ctx.font = f.label === 'NAME' ? `700 24px 'Plus Jakarta Sans', sans-serif` : 
+                   f.label === 'BUILDER ID' ? `600 24px 'Plus Jakarta Sans', sans-serif` :
+                   f.label === 'STACK' ? `600 18px 'Plus Jakarta Sans', sans-serif` :
+                   `700 20px 'Plus Jakarta Sans', sans-serif`;
+        ctx.fillText(f.value.toUpperCase(), rx, f.y);
+      }
 
       // Separator line
       ctx.strokeStyle = 'rgba(255,255,255,0.08)';
@@ -623,6 +621,9 @@
   if(downloadBtn) {
       downloadBtn.addEventListener('click', ()=>{
         if(!sourceImage) return;
+        window.isExporting = true;
+        render();
+        
         canvas.toBlob((blob)=>{
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
@@ -632,6 +633,9 @@
           a.click();
           a.remove();
           setTimeout(()=>URL.revokeObjectURL(url), 3000);
+          
+          window.isExporting = false;
+          render();
           showToast("Saved to your downloads ✓");
         }, 'image/png', 1.0);
       });
@@ -642,7 +646,13 @@
         if(!sourceImage) return;
 
         if(navigator.canShare && navigator.share){
+          window.isExporting = true;
+          render();
+          
           canvas.toBlob(async (blob)=>{
+            window.isExporting = false;
+            render();
+            
             const file = new File([blob], 'hh-goa.png', {type:'image/png'});
             if(navigator.canShare({files:[file]})){
               try{
@@ -652,18 +662,30 @@
                 if(err.name === 'AbortError') return;
               }
             }
-            await fallbackShareWithUpload();
+            await fallbackShareWithUpload(blob);
           }, 'image/png', 1.0);
         } else {
-          await fallbackShareWithUpload();
+          window.isExporting = true;
+          render();
+          canvas.toBlob(async (blob) => {
+            window.isExporting = false;
+            render();
+            await fallbackShareWithUpload(blob);
+          }, 'image/png', 1.0);
         }
       });
   }
 
-  async function fallbackShareWithUpload() {
+  async function fallbackShareWithUpload(blob) {
     shareBtn.classList.add('loading');
     try {
-      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 0.9));
+      if (!blob) {
+          window.isExporting = true;
+          render();
+          blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 0.9));
+          window.isExporting = false;
+          render();
+      }
       
       const formData = new FormData();
       formData.append('file', blob, 'frame.png');
