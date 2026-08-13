@@ -445,16 +445,16 @@ body {
     opacity: 1;
     margin-bottom: 8px;
     text-transform: uppercase;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    text-shadow: 0 4px 12px rgba(0,0,0,1), 0 0 24px rgba(0,0,0,0.8);
 }
 
 .identity-title {
     font-family: var(--font-display);
     font-size: clamp(34px, 6vw, 56px);
-    color: var(--cyber-gold);
+    color: var(--text-white);
     font-weight: 900;
     letter-spacing: 1px;
-    text-shadow: 0 4px 16px rgba(0,0,0,0.9);
+    text-shadow: 0 4px 16px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.8);
 }
 
 /* SIDE-BY-SIDE SQUARE CARDS GRID */
@@ -526,9 +526,9 @@ body {
 
 .card-pink .card-pill,
 .card-yellow .card-pill {
-    background: rgba(255, 215, 0, 0.15);
-    color: var(--cyber-gold);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-pink .card-bottom-link,
@@ -552,9 +552,9 @@ body {
 
 .card-pink .card-icon-badge,
 .card-yellow .card-icon-badge {
-    color: var(--cyber-gold);
-    background: rgba(255, 215, 0, 0.05);
-    border-color: rgba(255, 215, 0, 0.3);
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card-body {
@@ -571,7 +571,7 @@ body {
 
 .card-pink .card-title,
 .card-yellow .card-title {
-    color: var(--cyber-gold);
+    color: var(--text-white);
     text-shadow: 0 3px 12px rgba(0,0,0,0.8);
 }
 
