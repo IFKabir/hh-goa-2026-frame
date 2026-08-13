@@ -1138,9 +1138,11 @@ main,
 
     overflow: hidden;
 
-    background: #1a1a1a;
-
-    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
 }
 
 
@@ -1168,7 +1170,7 @@ canvas {
 
     gap: 12px;
 
-    color: #777;
+    color: rgba(255, 255, 255, 0.65);
 
     pointer-events: none;
 }
@@ -1187,11 +1189,13 @@ canvas {
 
     border-radius: 50%;
 
-    background: #aaa;
+    background: rgba(255, 255, 255, 0.05);
 
-    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 
-    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 20px;
 }
 
 
