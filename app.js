@@ -693,4 +693,23 @@
 
   window.addEventListener('resize', ()=>{ if(sourceImage) render(); });
 
+  // Music Player Logic
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggleBtn = document.getElementById('musicToggleBtn');
+  if (bgMusic && musicToggleBtn) {
+      const playIcon = musicToggleBtn.querySelector('.music-play-icon');
+      const pauseIcon = musicToggleBtn.querySelector('.music-pause-icon');
+      musicToggleBtn.addEventListener('click', function() {
+          if (bgMusic.paused) {
+              bgMusic.play();
+              playIcon.style.display = 'none';
+              pauseIcon.style.display = 'inline';
+          } else {
+              bgMusic.pause();
+              playIcon.style.display = 'inline';
+              pauseIcon.style.display = 'none';
+          }
+      });
+  }
+
 })();
