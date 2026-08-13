@@ -44,6 +44,7 @@
   const zoomControls = document.getElementById('zoomControls');
   const zoomHint = document.getElementById('zoomHint');
   const overlayContainer = document.getElementById('overlayInputs');
+  const actionsWrap = document.querySelector('.actions');
   
   // Set initial random values
   let generatedId = "HH26-" + Math.floor(100 + Math.random()*899);
@@ -116,11 +117,13 @@
         imgNaturalH = img.naturalHeight;
         resetTransform();
         loadingOverlay.classList.remove('show');
-        emptyPreview.style.display = 'none';
+        if (canvasWrap) canvasWrap.style.display = 'block';
+        if (emptyPreview) emptyPreview.style.display = 'none';
         
         // Show zoom controls
         if(zoomControls) zoomControls.style.display = 'flex';
         if(zoomHint) zoomHint.style.display = 'block';
+        if(actionsWrap) actionsWrap.style.display = 'grid';
 
         // Enable buttons
         downloadBtn.disabled = false;
@@ -167,10 +170,12 @@
   function resetUI(){
     fileInput.value = '';
     sourceImage = null;
-    emptyPreview.style.display = 'flex';
+    if (canvasWrap) canvasWrap.style.display = 'none';
+    if (emptyPreview) emptyPreview.style.display = 'flex';
     if(zoomControls) zoomControls.style.display = 'none';
     if(zoomHint) zoomHint.style.display = 'none';
     if(overlayContainer) overlayContainer.style.display = 'none';
+    if(actionsWrap) actionsWrap.style.display = 'none';
     downloadBtn.disabled = true;
     shareBtn.disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);

@@ -117,7 +117,7 @@ body {
     font-size: clamp(28px, 2.8vw, 42px);
     font-weight: 900;
     letter-spacing: 1px;
-    color: var(--goa-yellow);
+    color: #FFC700;
 }
 
 .studio-meridiem {
@@ -133,7 +133,7 @@ body {
     margin-top: 4px;
     font-weight: 900;
     line-height: 1;
-    color: var(--goa-yellow);
+    color: #00ff9d;
 }
 
 @keyframes studioFloat {
@@ -241,13 +241,13 @@ body {
 }
 
 .hero-btn-green {
-    background: var(--goa-green-deep);
-    color: var(--text-white);
-    border-color: var(--goa-green-deep);
+    background: #00ff9d;
+    color: #000;
+    border-color: #00ff9d;
 }
 
 .hero-btn-green:hover {
-    background: var(--goa-green);
+    background: #00e08a;
     transform: translateY(-2px);
     box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3);
 }
@@ -258,13 +258,13 @@ body {
 }
 
 .hero-btn-yellow {
-    background: var(--goa-yellow);
-    color: var(--goa-dark);
-    border-color: var(--goa-yellow);
+    background: #FFC700;
+    color: #000;
+    border-color: #FFC700;
 }
 
 .hero-btn-yellow:hover {
-    background: var(--goa-cream);
+    background: #e6b300;
     transform: translateY(-2px);
     box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3);
 }
@@ -450,7 +450,7 @@ body {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: var(--goa-pink);
+    color: #00ff9d;
     margin-bottom: 8px;
     text-transform: uppercase;
 }
@@ -458,7 +458,7 @@ body {
 .identity-title {
     font-family: var(--font-display);
     font-size: clamp(34px, 6vw, 56px);
-    color: var(--goa-yellow);
+    color: #FFC700;
     font-weight: 900;
     letter-spacing: 1px;
     text-shadow: 0 4px 0 var(--goa-dark);
@@ -573,7 +573,7 @@ body {
 }
 
 .card-pink .card-title {
-    color: var(--goa-yellow);
+    color: #00ff9d;
     text-shadow: 0 3px 0 var(--goa-dark);
 }
 
@@ -1136,7 +1136,7 @@ canvas {
 */
 
 .actions {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
@@ -1537,7 +1537,7 @@ footer {
     margin-top: 60px;
     padding-bottom: 40px;
     text-align: center;
-    color: var(--text-subtle);
+    color: #FFC700;
     font-size: 13px;
     letter-spacing: 1px;
 }
