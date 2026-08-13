@@ -60,54 +60,54 @@ body {
     animation: floatDrift 10s ease-in-out infinite;
 }
 
-.float-star { font-size: 22px; }
-.float-icon { font-size: 28px; opacity: 0.55; }
+.float-star { font-size: 22px; color: rgba(255, 255, 255, 0.4); }
+.float-icon { font-size: 24px; opacity: 0.4; font-family: var(--font-mono); font-weight: 700; color: rgba(255, 255, 255, 0.6); }
 .float-dot {
     width: 6px;
     height: 6px;
-    background-color: rgba(245, 232, 184, 0.35);
+    background-color: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
 }
 
 /* Sparkles — individual drift speeds */
-.fi-star-1 { top: 9%;  left: 7%;  color: rgba(245,232,184,0.5); animation: floatDrift  9s  2.0s ease-in-out infinite; }
-.fi-star-2 { top: 55%; right: 6%; color: rgba(245,232,184,0.5); animation: floatDrift  7s  0.5s ease-in-out infinite; }
-.fi-star-3 { top: 35%; left: 48%; color: rgba(245,232,184,0.4); animation: floatDriftB 11s 3.5s ease-in-out infinite; }
+.fi-star-1 { top: 9%;  left: 7%;  animation: floatDrift  18s  2.0s ease-in-out infinite; }
+.fi-star-2 { top: 55%; right: 6%; animation: floatDrift  14s  0.5s ease-in-out infinite; }
+.fi-star-3 { top: 35%; left: 48%; animation: floatDriftB 22s  3.5s ease-in-out infinite; }
 
 /* Dots */
-.fi-dot-1  { top: 22%; left: 17%; animation: floatDrift  10s 1.0s ease-in-out infinite; }
-.fi-dot-2  { top: 66%; right:20%; animation: floatDriftB  8s 2.5s ease-in-out infinite; }
-.fi-dot-3  { top: 80%; left: 38%; animation: floatDrift   6s 0.8s ease-in-out infinite; }
+.fi-dot-1  { top: 22%; left: 17%; animation: floatDrift  20s 1.0s ease-in-out infinite; }
+.fi-dot-2  { top: 66%; right:20%; animation: floatDriftB 16s 2.5s ease-in-out infinite; }
+.fi-dot-3  { top: 80%; left: 38%; animation: floatDrift  12s 0.8s ease-in-out infinite; }
 
-/* Goa-themed icons — each has its own duration for organic look */
-.fi-shades  { top: 8%;  right: 14%; animation: floatDrift   9s  0.8s ease-in-out infinite; }
-.fi-cocktail{ top: 18%; left: 4%;   animation: floatDriftB 11s  2.2s ease-in-out infinite; }
-.fi-flip    { top: 78%; left: 6%;   animation: floatDrift   8s  1.8s ease-in-out infinite; }
-.fi-shell   { top: 72%; right: 8%;  animation: floatDriftB 12s  3.2s ease-in-out infinite; }
-.fi-camera  { top: 44%; left: 3%;   animation: floatDrift   7s  0.4s ease-in-out infinite; }
-.fi-hat     { top: 14%; left: 32%;  animation: floatDriftB 10s  2.8s ease-in-out infinite; }
-.fi-star4   { top: 90%; right: 28%; animation: floatDrift   9s  1.2s ease-in-out infinite; }
-.fi-leaf    { top: 48%; right: 4%;  animation: floatDriftB  8s  3.6s ease-in-out infinite; }
-.fi-palm    { top: 85%; left: 22%;  animation: floatDrift  13s  2.0s ease-in-out infinite; }
-.fi-sun     { top: 6%;  right: 42%; animation: floatDriftB  7s  4.2s ease-in-out infinite; }
-.fi-wave    { top: 62%; left: 28%;  animation: floatDrift  10s  1.0s ease-in-out infinite; }
-.fi-fish    { top: 30%; right: 28%; animation: floatDriftB  9s  2.6s ease-in-out infinite; }
+/* Coding symbols */
+.fi-shades  { top: 8%;  right: 14%; animation: floatDrift   18s  0.8s ease-in-out infinite; }
+.fi-cocktail{ top: 18%; left: 4%;   animation: floatDriftB 22s  2.2s ease-in-out infinite; }
+.fi-flip    { top: 78%; left: 6%;   animation: floatDrift  16s  1.8s ease-in-out infinite; }
+.fi-shell   { top: 72%; right: 8%;  animation: floatDriftB 24s  3.2s ease-in-out infinite; }
+.fi-camera  { top: 44%; left: 3%;   animation: floatDrift  14s  0.4s ease-in-out infinite; }
+.fi-hat     { top: 14%; left: 32%;  animation: floatDriftB 20s  2.8s ease-in-out infinite; }
+.fi-star4   { top: 90%; right: 28%; animation: floatDrift  18s  1.2s ease-in-out infinite; }
+.fi-leaf    { top: 48%; right: 4%;  animation: floatDriftB 16s  3.6s ease-in-out infinite; }
+.fi-palm    { top: 85%; left: 22%;  animation: floatDrift  26s  2.0s ease-in-out infinite; }
+.fi-sun     { top: 6%;  right: 42%; animation: floatDriftB 14s  4.2s ease-in-out infinite; }
+.fi-wave    { top: 62%; left: 28%;  animation: floatDrift  20s  1.0s ease-in-out infinite; }
+.fi-fish    { top: 30%; right: 28%; animation: floatDriftB 18s  2.6s ease-in-out infinite; }
 
 /* Smooth 5-step drift — clockwise loop */
 @keyframes floatDrift {
     0%   { transform: translate(  0px,   0px) rotate(  0deg) scale(1);    }
-    20%  { transform: translate(  4px,  -9px) rotate(  3deg) scale(1.02); }
-    45%  { transform: translate( -3px, -15px) rotate( -2deg) scale(1.04); }
-    70%  { transform: translate( -6px,  -7px) rotate(  4deg) scale(1.02); }
+    20%  { transform: translate(  8px, -18px) rotate(  6deg) scale(1.02); }
+    45%  { transform: translate( -6px, -30px) rotate( -4deg) scale(1.04); }
+    70%  { transform: translate(-12px, -14px) rotate(  8deg) scale(1.02); }
     100% { transform: translate(  0px,   0px) rotate(  0deg) scale(1);    }
 }
 
 /* Counter-drift variant so icons don't sync */
 @keyframes floatDriftB {
     0%   { transform: translate(  0px,   0px) rotate(  0deg) scale(1);    }
-    25%  { transform: translate( -5px, -10px) rotate( -3deg) scale(1.03); }
-    50%  { transform: translate(  2px, -18px) rotate(  2deg) scale(1.05); }
-    75%  { transform: translate(  5px,  -8px) rotate( -4deg) scale(1.02); }
+    25%  { transform: translate(-10px, -20px) rotate( -6deg) scale(1.03); }
+    50%  { transform: translate(  4px, -36px) rotate(  4deg) scale(1.05); }
+    75%  { transform: translate( 10px, -16px) rotate( -8deg) scale(1.02); }
     100% { transform: translate(  0px,   0px) rotate(  0deg) scale(1);    }
 }
 

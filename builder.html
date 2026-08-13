@@ -64,18 +64,18 @@
         <span class="float-item float-dot fi-dot-2"></span>
         <span class="float-item float-star fi-star-3">✦</span>
         <span class="float-item float-dot fi-dot-3"></span>
-        <span class="float-item float-icon fi-shades">🕶️</span>
-        <span class="float-item float-icon fi-cocktail">🍹</span>
-        <span class="float-item float-icon fi-flip">🩴</span>
-        <span class="float-item float-icon fi-shell">🐚</span>
-        <span class="float-item float-icon fi-camera">📷</span>
-        <span class="float-item float-icon fi-hat">👒</span>
-        <span class="float-item float-icon fi-star4">⭐</span>
-        <span class="float-item float-icon fi-leaf">🌿</span>
-        <span class="float-item float-icon fi-palm">🌴</span>
-        <span class="float-item float-icon fi-sun">☀️</span>
-        <span class="float-item float-icon fi-wave">〰</span>
-        <span class="float-item float-icon fi-fish">🐠</span>
+        <span class="float-item float-icon fi-shades">{ }</span>
+        <span class="float-item float-icon fi-cocktail">&lt;/&gt;</span>
+        <span class="float-item float-icon fi-flip">[ ]</span>
+        <span class="float-item float-icon fi-shell">//</span>
+        <span class="float-item float-icon fi-camera">#</span>
+        <span class="float-item float-icon fi-hat">;</span>
+        <span class="float-item float-icon fi-star4">✦</span>
+        <span class="float-item float-icon fi-leaf">&lt; &gt;</span>
+        <span class="float-item float-icon fi-palm">*</span>
+        <span class="float-item float-icon fi-sun">()</span>
+        <span class="float-item float-icon fi-wave">~</span>
+        <span class="float-item float-icon fi-fish">_</span>
     </div>
 
     <div class="house-bg-layer" aria-hidden="true"></div>
@@ -174,5 +174,40 @@
     <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
     <script>window.PFP_MODE = false;</script>
     <script src="app.js"></script>
+    
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggleBtn = document.getElementById('musicToggleBtn');
+        if (bgMusic && musicToggleBtn) {
+            const playIcon = musicToggleBtn.querySelector('.music-play-icon');
+            const pauseIcon = musicToggleBtn.querySelector('.music-pause-icon');
+            musicToggleBtn.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'inline';
+                } else {
+                    bgMusic.pause();
+                    playIcon.style.display = 'inline';
+                    pauseIcon.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <!-- MUSIC PLAYER WIDGET -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggleBtn" aria-label="Play/Pause Music">
+            <span class="music-play-icon">▶</span>
+            <span class="music-pause-icon" style="display: none;">⏸</span>
+        </button>
+        <div class="music-info">
+            <span class="music-name">Coding on the Beach - Lofi Mix</span>
+        </div>
+        <!-- Royalty-free chill lofi track -->
+        <audio id="bgMusic" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf7f5.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 </body>
 </html>
