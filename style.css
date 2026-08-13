@@ -443,9 +443,15 @@ body {
     letter-spacing: 2px;
     color: var(--cyber-gold);
     opacity: 1;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     text-transform: uppercase;
-    text-shadow: 0 4px 12px rgba(0,0,0,1), 0 0 24px rgba(0,0,0,0.8);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 16px;
+    border-radius: 30px;
+    display: inline-block;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(8px);
 }
 
 .identity-title {
@@ -1617,12 +1623,18 @@ footer {
 }
 
 .generator-heading p {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 2.5px;
-    color: var(--accent-pink);
+    color: var(--cyber-gold);
     text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 16px;
+    border-radius: 30px;
+    display: inline-block;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(8px);
 }
 
 .generator-heading h1 {
