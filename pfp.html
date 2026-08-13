@@ -148,5 +148,41 @@
     <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
     <script>window.PFP_MODE = true;</script>
     <script src="app.js"></script>
+    
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggleBtn = document.getElementById('musicToggleBtn');
+        if (bgMusic && musicToggleBtn) {
+            const playIcon = musicToggleBtn.querySelector('.music-play-icon');
+            const pauseIcon = musicToggleBtn.querySelector('.music-pause-icon');
+            musicToggleBtn.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'inline';
+                } else {
+                    bgMusic.pause();
+                    playIcon.style.display = 'inline';
+                    pauseIcon.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <!-- MUSIC PLAYER WIDGET -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggleBtn" aria-label="Play/Pause Music">
+            <span class="music-play-icon">▶</span>
+            <span class="music-pause-icon" style="display: none;">⏸</span>
+        </button>
+        <div class="music-info">
+            <span class="music-name">Coding on the Beach - Lofi Mix</span>
+        </div>
+        <!-- Royalty-free chill lofi track -->
+        <audio id="bgMusic" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf7f5.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="runaway.js"></script>
 </body>
 </html>
