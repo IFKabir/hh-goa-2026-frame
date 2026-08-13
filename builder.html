@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HH Goa 2026 — Builder ID Card</title>
+    <!-- Open Graph tags for dynamic sharing -->
+    <meta property="og:title" content="I'm building at HH Goa 2026">
+    <meta property="og:description" content="Frame In Goa — get your badge at HH Goa 2026">
+    <meta property="og:image" content="https://hhgoa-frame-three.vercel.app/og-default.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Syne:wght@700;800&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Extra styles for our tools (like sliders, toast, loading) -->
+    <style>
+      .zoom-row {
+          display: flex; align-items: center; gap: 12px; margin-top: 10px; width: 100%;
+      }
+      .zoom-row svg { width: 16px; height: 16px; stroke: #fff; flex-shrink: 0; }
+      input[type="range"] {
+          -webkit-appearance: none; appearance: none;
+          flex: 1; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.2); outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none; appearance: none;
+          width: 18px; height: 18px; border-radius: 50%;
+          background: #ffb347; cursor: pointer;
+      }
+      .hint { font-size: 12px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 8px; width:100%; }
+      .toast {
+          position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+          background: #111; border: 1px solid rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 12px;
+          font-size: 14px; color: #fff; opacity: 0; pointer-events: none; transition: all .25s; z-index: 9999;
+      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+      .loading-overlay {
+          position: absolute; inset: 0; background: rgba(0,0,0,0.7);
+          display: none; align-items: center; justify-content: center; flex-direction: column; gap: 10px; z-index: 10;
+          color: white; border-radius: 16px;
+      }
+      .loading-overlay.show { display: flex; }
+      .spinner {
+          width: 32px; height: 32px; border-radius: 50%; border: 3px solid rgba(255,179,71,0.2);
+          border-top-color: #ffb347; animation: spin .8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .secondary-button.loading { opacity: 0.7; pointer-events: none; }
+      .canvas-container { position: relative; touch-action: none; overflow: hidden; }
+      canvas { position: absolute; top:0; left:0; width: 100%; height: 100%; }
+    </style>
+</head>
+
+<body class="sub-page">
+    <div class="bg-texture-layer" aria-hidden="true">
+        <!-- Sparkles & dots -->
+        <span class="float-item float-star fi-star-1">✦</span>
+        <span class="float-item float-dot fi-dot-1"></span>
+        <span class="float-item float-star fi-star-2">✧</span>
+        <span class="float-item float-dot fi-dot-2"></span>
+        <span class="float-item float-star fi-star-3">✦</span>
+        <span class="float-item float-dot fi-dot-3"></span>
+        <span class="float-item float-icon fi-shades">🕶️</span>
+        <span class="float-item float-icon fi-cocktail">🍹</span>
+        <span class="float-item float-icon fi-flip">🩴</span>
+        <span class="float-item float-icon fi-shell">🐚</span>
+        <span class="float-item float-icon fi-camera">📷</span>
+        <span class="float-item float-icon fi-hat">👒</span>
+        <span class="float-item float-icon fi-star4">⭐</span>
+        <span class="float-item float-icon fi-leaf">🌿</span>
+        <span class="float-item float-icon fi-palm">🌴</span>
+        <span class="float-item float-icon fi-sun">☀️</span>
+        <span class="float-item float-icon fi-wave">〰</span>
+        <span class="float-item float-icon fi-fish">🐠</span>
+    </div>
+
+    <div class="house-bg-layer" aria-hidden="true"></div>
+    <div class="goa-fade-overlay" id="goaFadeOverlay"></div>
+
+    <header class="generator-header">
+        <a href="index.html" class="back-button">←</a>
+        <div class="generator-title">
+            <span>HACKER HOUSE</span>
+            <strong>GOA 2026</strong>
+        </div>
+    </header>
+
+    <main class="generator-page">
+        <section class="generator-heading">
+            <p>HH GOA 2026</p>
+            <h1>Builder ID Card</h1>
+            <span>Welcome to the house!</span>
+        </section>
+
+        <section class="generator-layout">
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="photoInput">Your photo</label>
+                    <label for="photoInput" class="upload-box" id="dropzone">
+                        <div class="upload-icon">+</div>
+                        <div>
+                            <strong>Upload your photo</strong>
+                            <p>JPG, PNG, WEBP or HEIC</p>
+                        </div>
+                    </label>
+                    <input type="file" id="photoInput" accept="image/*,.heic,.heif" hidden>
+                </div>
+
+                <div class="zoom-row" style="display:none;" id="zoomControls">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="range" id="zoomSlider" min="100" max="300" value="100" />
+                </div>
+                <p class="hint" style="display:none;" id="zoomHint">Drag photo to reposition · pinch to zoom</p>
+
+                <div class="form-group">
+                    <label for="nameInput">Name</label>
+                    <input type="text" id="nameInput" placeholder="Enter your name" maxlength="40">
+                </div>
+                <div class="form-group">
+                    <label for="roleInput">Role / Stack</label>
+                    <input type="text" id="roleInput" placeholder="e.g. Developer" maxlength="40">
+                </div>
+
+                <!-- Unused but matching reference UI for aesthetics -->
+                <button class="generate-button" id="generateBtn" type="button" style="display:none;">
+                    Generate ID Card
+                </button>
+            </div>
+
+            <div class="preview-section">
+                <div class="preview-header">
+                    <h2>Preview</h2>
+                    <span id="previewStatus">Ready</span>
+                </div>
+
+                <div class="canvas-container" id="canvasWrap">
+                    <canvas id="canvas" width="1024" height="784"></canvas>
+                    <div class="empty-preview" id="emptyPreview">
+                        <div class="preview-icon">+</div>
+                        <p>Your ID card will appear here</p>
+                    </div>
+                    <div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div><span style="font-size:13px;margin-top:8px;">Processing…</span></div>
+                </div>
+
+                <div class="actions">
+                    <button id="downloadBtn" class="secondary-button" type="button" disabled>Download PNG</button>
+                    <button id="shareBtn" class="secondary-button" type="button" disabled>Share to X</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+    <script>window.PFP_MODE = false;</script>
+    <script src="app.js"></script>
+</body>
+</html>

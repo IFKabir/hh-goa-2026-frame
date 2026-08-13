@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH Goa 2026 — Builder ID Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Syne:wght@700;800&family=Cinzel:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="sub-page">
+
+    <!-- SUBTLE FLOATING BACKGROUND TEXTURE -->
+    <div class="bg-texture-layer" aria-hidden="true">
+        <!-- Sparkles & dots -->
+        <span class="float-item float-star fi-star-1">✦</span>
+        <span class="float-item float-dot fi-dot-1"></span>
+        <span class="float-item float-star fi-star-2">✧</span>
+        <span class="float-item float-dot fi-dot-2"></span>
+        <span class="float-item float-star fi-star-3">✦</span>
+        <span class="float-item float-dot fi-dot-3"></span>
+        <!-- Goa / vacation themed -->
+        <span class="float-item float-icon fi-shades">🕶️</span>
+        <span class="float-item float-icon fi-cocktail">🍹</span>
+        <span class="float-item float-icon fi-flip">🩴</span>
+        <span class="float-item float-icon fi-shell">🐚</span>
+        <span class="float-item float-icon fi-camera">📷</span>
+        <span class="float-item float-icon fi-hat">👒</span>
+        <span class="float-item float-icon fi-star4">⭐</span>
+        <span class="float-item float-icon fi-leaf">🌿</span>
+        <span class="float-item float-icon fi-palm">🌴</span>
+        <span class="float-item float-icon fi-sun">☀️</span>
+        <span class="float-item float-icon fi-wave">〰</span>
+        <span class="float-item float-icon fi-fish">🐠</span>
+    </div>
+
+    <!-- FULL-SCREEN CYBER GOA BACKGROUND IMAGE -->
+    <div class="house-bg-layer" aria-hidden="true"></div>
+
+    <!-- Full-screen fade overlay for page transition -->
+    <div class="goa-fade-overlay" id="goaFadeOverlay"></div>
+
+    <header class="generator-header">
+        <a href="index.html" class="back-button">←</a>
+        <div class="generator-title">
+            <span>HACKER HOUSE</span>
+            <strong>GOA 2026</strong>
+        </div>
+    </header>
+
+    <main class="generator-page">
+
+        <section class="generator-heading">
+            <p>HH GOA 2026</p>
+            <h1>Builder ID Card</h1>
+            <span>Welcome to the house!</span>
+        </section>
+
+        <section class="generator-layout">
+
+            <div class="form-section">
+
+                <div class="form-group">
+                    <label for="photoInput">Your photo</label>
+                    <label for="photoInput" class="upload-box">
+                        <div class="upload-icon">+</div>
+                        <div>
+                            <strong>Upload your photo</strong>
+                            <p>JPG, PNG, WEBP or HEIC</p>
+                        </div>
+                    </label>
+                    <input type="file" id="photoInput" accept="image/*" hidden>
+                </div>
+
+                <!-- Builder ID — auto-generated, read-only with regenerate button -->
+                <div class="form-group">
+                    <label for="builderIdDisplay">Builder ID</label>
+                    <div class="id-row">
+                        <input type="text" id="builderIdDisplay" readonly placeholder="HHGOA-26-XXXX" class="id-display">
+                        <button type="button" id="regenIdBtn" class="regen-btn" title="Generate new ID">⟳</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nameInput">Name</label>
+                    <input type="text" id="nameInput" placeholder="Enter your name" maxlength="40">
+                </div>
+
+                <div class="form-group">
+                    <label for="roleInput">Role</label>
+                    <input type="text" id="roleInput" placeholder="e.g. Developer" maxlength="40">
+                </div>
+
+                <div class="form-group">
+                    <label for="stackInput">Stack</label>
+                    <input type="text" id="stackInput" placeholder="e.g. Flutter • JavaScript" maxlength="60">
+                </div>
+
+                <div class="form-group">
+                    <label for="teamInput">Team Name</label>
+                    <input type="text" id="teamInput" placeholder="e.g. Night Owls" maxlength="40">
+                </div>
+
+                <!-- Builder Class — user types or generates -->
+                <div class="form-group">
+                    <label for="builderClassInput">Builder Class</label>
+                    <div class="id-row">
+                        <input type="text" id="builderClassInput" placeholder="e.g. Code Alchemist" maxlength="40" class="id-display">
+                        <button type="button" id="regenClassBtn" class="regen-btn" title="Generate a Builder Class">⟳</button>
+                    </div>
+                </div>
+
+                <button class="generate-button" id="generateBtn" type="button">
+                    Generate ID Card
+                </button>
+
+            </div>
+
+            <div class="preview-section">
+
+                <div class="preview-header">
+                    <h2>Preview</h2>
+                    <span id="previewStatus">Ready</span>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="canvas" width="1024" height="784"></canvas>
+                    <div class="empty-preview" id="emptyPreview">
+                        <div class="preview-icon">+</div>
+                        <p>Your ID card will appear here</p>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button id="downloadBtn" class="secondary-button" type="button" disabled>Download PNG</button>
+                    <button id="shareBtn" class="secondary-button" type="button" disabled>Share to X</button>
+                    <button id="instagramBtn" class="secondary-button" type="button" disabled>Share on Instagram</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
