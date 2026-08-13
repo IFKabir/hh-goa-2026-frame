@@ -58,6 +58,23 @@ body {
     transition: background 0.3s ease;
 }
 
+.house-bg-layer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('assets/clouds_layer.jpg') repeat-x;
+    background-size: cover;
+    mix-blend-mode: screen;
+    opacity: 0.15;
+    animation: moveClouds 120s linear infinite;
+    z-index: 1;
+}
+
+@keyframes moveClouds {
+    from { background-position: 0 0; }
+    to { background-position: -200vw 0; }
+}
+
 @media (max-width: 768px), (max-aspect-ratio: 1/1) {
     .house-bg-layer {
         background: url('assets/bg-bw-goa.jpg') center center / cover no-repeat;

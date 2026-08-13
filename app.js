@@ -265,18 +265,18 @@
     ctx.fillRect(0,0,S,S);
 
     // Decorative Borders
-    ctx.strokeStyle = '#ffffff';
+    ctx.strokeStyle = '#FFD700'; // Cyber Gold outer ring
     ctx.lineWidth = 12;
     roundRect(ctx, 24, 24, S-48, S-48, 40);
     ctx.stroke();
 
-    ctx.strokeStyle = '#a3a3a3';
+    ctx.strokeStyle = '#a3a3a3'; // Inner silver ring
     ctx.lineWidth = 4;
     roundRect(ctx, 44, 44, S-88, S-88, 30);
     ctx.stroke();
 
     // Corner Accents
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#FFD700'; // Cyber Gold accents
     [44, S-44].forEach(x => {
       [44, S-44].forEach(y => {
         ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI*2); ctx.fill();
@@ -304,16 +304,16 @@
     ctx.restore();
 
     // Top Header: HACKER HOUSE
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#FFD700';
     ctx.textAlign = 'center';
     ctx.font = `800 ${S*0.1}px 'Cinzel', 'Yatra One', serif`;
     ctx.fillText('HACKER HOUSE', S/2, S*0.18);
 
     // Pill (Top Rightish)
-    ctx.fillStyle = '#333333';
+    ctx.fillStyle = '#FFD700';
     roundRect(ctx, S*0.75, S*0.11, 140, 50, 15);
     ctx.fill();
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#0a0a0a';
     ctx.font = `800 24px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText("गोवा", S*0.75 + 70, S*0.11 + 32);
 
@@ -346,27 +346,27 @@
     }
 
     // Main Inner Border
-    ctx.strokeStyle = '#ffffff';
+    ctx.strokeStyle = '#FFD700';
     ctx.lineWidth = 2;
     roundRect(ctx, 16, 16, W-32, H-32, 16);
     ctx.stroke();
     
-    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.strokeStyle = 'rgba(255,215,0,0.2)';
     roundRect(ctx, 24, 24, W-48, H-48, 12);
     ctx.stroke();
 
     // Wordmark: HACKER HOUSE
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#FFD700';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'alphabetic';
     ctx.font = `800 68px 'Cinzel', 'Yatra One', serif`;
     ctx.fillText('HACKER HOUSE', 48, 96);
     
     // Badge overlapping wordmark
-    ctx.fillStyle = '#333333';
+    ctx.fillStyle = '#FFD700';
     roundRect(ctx, 330, 50, 70, 36, 10);
     ctx.fill();
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#0a0a0a';
     ctx.font = `800 18px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText("गोवा", 345, 75);
 
@@ -426,7 +426,7 @@
     const rx = 710;
     
     // Title: BUILDER PASS
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#FFD700';
     ctx.textAlign = 'left';
     ctx.font = `800 32px 'Cinzel', serif`;
     ctx.fillText('✦ BUILDER PASS ✦', 640, 90);
@@ -435,13 +435,16 @@
     ctx.save();
     ctx.translate(920, 100);
     ctx.rotate(10 * Math.PI / 180);
-    ctx.strokeStyle = '#7a7a7a';
+    ctx.strokeStyle = '#FFD700';
     ctx.lineWidth = 4;
     ctx.setLineDash([8, 6]);
     roundRect(ctx, -50, -60, 100, 120, 10);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#4d4d4d';
+    ctx.fillStyle = 'rgba(255,215,0,0.15)';
+    roundRect(ctx, -50, -60, 100, 120, 10);
+    ctx.fill();
+    ctx.fillStyle = '#FFD700';
     ctx.textAlign = 'center';
     ctx.font = `800 24px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText('GOA', 0, -20);
@@ -464,12 +467,12 @@
     const bId = idEl ? idEl.value.trim() : generatedId;
 
     const fields = [
-      { label: 'BUILDER ID', value: bId, color: '#ffffff', iconCol: '#ffffff', y: 188 },
-      { label: 'NAME', value: name || 'YOUR NAME', color: '#ffffff', iconCol: '#cccccc', y: 256 },
-      { label: 'ROLE', value: role || 'YOUR ROLE', color: '#cccccc', iconCol: '#a3a3a3', y: 323 },
-      { label: 'STACK', value: stack || 'HTML/CSS/JS', color: '#ffffff', iconCol: '#7a7a7a', y: 390 },
-      { label: 'TEAM NAME', value: team || 'SOLO BUILDER', color: '#ffffff', iconCol: '#5c5c5c', y: 457 },
-      { label: 'BUILDER CLASS', value: bClass, color: '#cccccc', iconCol: '#cccccc', y: 525 }
+      { label: 'BUILDER ID', value: bId, color: '#ffffff', iconCol: '#FFD700', y: 188 },
+      { label: 'NAME', value: name || 'YOUR NAME', color: '#ffffff', iconCol: '#FFD700', y: 256 },
+      { label: 'ROLE', value: role || 'YOUR ROLE', color: '#cccccc', iconCol: '#FFD700', y: 323 },
+      { label: 'STACK', value: stack || 'HTML/CSS/JS', color: '#ffffff', iconCol: '#FFD700', y: 390 },
+      { label: 'TEAM NAME', value: team || 'SOLO BUILDER', color: '#ffffff', iconCol: '#FFD700', y: 457 },
+      { label: 'BUILDER CLASS', value: bClass, color: '#FFD700', iconCol: '#FFD700', y: 525 }
     ];
 
     ctx.textAlign = 'left';
