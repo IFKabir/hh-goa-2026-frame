@@ -116,14 +116,7 @@
                 </div>
                 <p class="hint" style="display:none;" id="zoomHint">Drag photo to reposition · pinch to zoom</p>
 
-                <div class="form-group">
-                    <label for="nameInput">Name</label>
-                    <input type="text" id="nameInput" placeholder="Enter your name" maxlength="40">
-                </div>
-                <div class="form-group">
-                    <label for="roleInput">Role / Stack</label>
-                    <input type="text" id="roleInput" placeholder="e.g. Developer" maxlength="40">
-                </div>
+                <!-- Inputs moved to overlay -->
 
                 <!-- Unused but matching reference UI for aesthetics -->
                 <button class="generate-button" id="generateBtn" type="button" style="display:none;">
@@ -137,8 +130,29 @@
                     <span id="previewStatus">Ready</span>
                 </div>
 
-                <div class="canvas-container" id="canvasWrap">
+                <div class="canvas-container" id="canvasWrap" style="container-type: inline-size;">
                     <canvas id="canvas" width="1024" height="784"></canvas>
+                    
+                    <div id="overlayInputs" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events: none; display: none;">
+                        <style>
+                            .overlay-input {
+                                position: absolute; left: 69.33%; width: 28%;
+                                transform: translateY(-50%);
+                                background: transparent; border: none; outline: none;
+                                color: transparent; caret-color: rgba(255,255,255,0.7);
+                                pointer-events: auto; font-family: 'Plus Jakarta Sans', sans-serif;
+                                text-transform: uppercase;
+                            }
+                            .overlay-input::placeholder { color: transparent; }
+                        </style>
+                        <input type="text" id="builderIdDisplay" class="overlay-input" style="top: 23.97%; font-size: 3.1cqi; font-weight: 600;">
+                        <input type="text" id="nameInput" class="overlay-input" style="top: 32.65%; font-size: 3.1cqi; font-weight: 700;">
+                        <input type="text" id="roleInput" class="overlay-input" style="top: 41.19%; font-size: 2.6cqi; font-weight: 700;">
+                        <input type="text" id="stackInput" class="overlay-input" style="top: 49.74%; font-size: 2.3cqi; font-weight: 600;">
+                        <input type="text" id="teamInput" class="overlay-input" style="top: 58.29%; font-size: 2.6cqi; font-weight: 700;">
+                        <input type="text" id="builderClassInput" class="overlay-input" style="top: 66.96%; font-size: 2.6cqi; font-weight: 700;">
+                    </div>
+
                     <div class="empty-preview" id="emptyPreview">
                         <div class="preview-icon">+</div>
                         <p>Your ID card will appear here</p>

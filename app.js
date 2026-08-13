@@ -54,14 +54,27 @@
   const emptyPreview = document.getElementById('emptyPreview');
   const zoomControls = document.getElementById('zoomControls');
   const zoomHint = document.getElementById('zoomHint');
+  const overlayContainer = document.getElementById('overlayInputs');
   
-  const inputName = document.getElementById('nameInput');
-  const inputRole = document.getElementById('roleInput');
+  // Set initial random values
+  let generatedId = "HH26-" + Math.floor(100 + Math.random()*899);
+  
+  if (document.getElementById('builderClassInput')) {
+      document.getElementById('builderClassInput').value = generatedTitle;
+  }
+  if (document.getElementById('builderIdDisplay')) {
+      document.getElementById('builderIdDisplay').value = generatedId;
+  }
 
   document.fonts.ready.then(() => { if(sourceImage) render(); });
 
-  if (inputName) inputName.addEventListener('input', () => { if(sourceImage) render(); });
-  if (inputRole) inputRole.addEventListener('input', () => { if(sourceImage) render(); });
+  const overlayInputIds = ['nameInput', 'roleInput', 'stackInput', 'teamInput', 'builderClassInput', 'builderIdDisplay'];
+  overlayInputIds.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) {
+          el.addEventListener('input', () => { if(sourceImage) render(); });
+      }
+  });
 
   // ============================================================
   // TOAST
@@ -124,6 +137,10 @@
         downloadBtn.disabled = false;
         shareBtn.disabled = false;
         
+        if (overlayContainer && !isPFPMode) {
+            overlayContainer.style.display = 'block';
+        }
+        
         render();
       };
       img.onerror = ()=>{
@@ -164,6 +181,7 @@
     emptyPreview.style.display = 'flex';
     if(zoomControls) zoomControls.style.display = 'none';
     if(zoomHint) zoomHint.style.display = 'none';
+    if(overlayContainer) overlayContainer.style.display = 'none';
     downloadBtn.disabled = true;
     shareBtn.disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -252,11 +270,19 @@
     // Right side text
     const rx = 710;
     
-    const name = document.getElementById('nameInput') ? document.getElementById('nameInput').value.trim() : '';
-    const role = document.getElementById('roleInput') ? document.getElementById('roleInput').value.trim() : '';
-    const stack = document.getElementById('stackInput') ? document.getElementById('stackInput').value.trim() : '';
-    const team = document.getElementById('teamInput') ? document.getElementById('teamInput').value.trim() : '';
-    const fakeId = "HHGOA-26-" + (name ? name.substring(0,3).toUpperCase() : "GEN") + Math.floor(Math.random()*999);
+    const nameEl = document.getElementById('nameInput');
+    const roleEl = document.getElementById('roleInput');
+    const stackEl = document.getElementById('stackInput');
+    const teamEl = document.getElementById('teamInput');
+    const classEl = document.getElementById('builderClassInput');
+    const idEl = document.getElementById('builderIdDisplay');
+    
+    const name = nameEl ? nameEl.value.trim() : '';
+    const role = roleEl ? roleEl.value.trim() : '';
+    const stack = stackEl ? stackEl.value.trim() : '';
+    const team = teamEl ? teamEl.value.trim() : '';
+    const bClass = classEl ? classEl.value.trim() : generatedTitle;
+    const bId = idEl ? idEl.value.trim() : generatedId;
 
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
@@ -264,7 +290,7 @@
     // BUILDER ID
     ctx.fillStyle = '#FFC700'; // Yellow
     ctx.font = `600 24px 'Plus Jakarta Sans', sans-serif`;
-    ctx.fillText(fakeId.toUpperCase(), rx, 188);
+    ctx.fillText(bId.toUpperCase(), rx, 188);
 
     // NAME
     ctx.fillStyle = '#ffffff';
@@ -289,7 +315,7 @@
     // CLASS
     ctx.fillStyle = '#FF297F';
     ctx.font = `700 20px 'Plus Jakarta Sans', sans-serif`;
-    ctx.fillText(generatedTitle.toUpperCase(), rx, 525);
+    ctx.fillText(bClass.toUpperCase(), rx, 525);
   }
 
   // ============================================================
