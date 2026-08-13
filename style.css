@@ -1,17 +1,17 @@
 :root {
-    --goa-green: #006b3c;
-    --goa-green-deep: #044a2b;
-    --goa-dark: #03281a;
-    --goa-yellow: #ffd900;
-    --goa-pink: #ff2b72;
-    --goa-cream: #f5e8b8;
-    --goa-lime: #c4d600;
-    --accent-yellow: #ffd900;
-    --accent-pink: #ff2b72;
+    --goa-green: #111111;
+    --goa-green-deep: #000000;
+    --goa-dark: #000000;
+    --goa-yellow: #ffffff;
+    --goa-pink: #a3a3a3;
+    --goa-cream: #e5e5e5;
+    --goa-lime: #cccccc;
+    --accent-yellow: #ffffff;
+    --accent-pink: #a3a3a3;
     --text-white: #ffffff;
-    --text-subtle: rgba(255, 255, 255, 0.8);
-    --panel-bg: rgba(3, 40, 26, 0.7);
-    --panel-border: rgba(245, 232, 184, 0.25);
+    --text-subtle: rgba(255, 255, 255, 0.7);
+    --panel-bg: rgba(0, 0, 0, 0.8);
+    --panel-border: rgba(255, 255, 255, 0.15);
     --font-display: "Anton", "Arial Narrow", Impact, sans-serif;
     --font-mono: "Space Mono", ui-monospace, monospace;
     --font-script: "Yatra One", cursive;
@@ -122,13 +122,13 @@ body {
     z-index: 0;   /* bottom-most layer */
     overflow: hidden;
     pointer-events: none;
-    background: url('assets/bg-cyber-goa.jpg') center center / cover no-repeat;
+    background: url('assets/bg-bw-goa.jpg') center center / cover no-repeat;
     transition: background 0.3s ease;
 }
 
 @media (max-width: 768px), (max-aspect-ratio: 1/1) {
     .house-bg-layer {
-        background: url('assets/bg-cyber-goa.jpg') center center / cover no-repeat;
+        background: url('assets/bg-bw-goa.jpg') center center / cover no-repeat;
     }
 }
 
@@ -215,12 +215,12 @@ body {
 }
 
 .poster-card-overlay {
-    background: rgba(3, 40, 26, 0.72);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    border: 1.5px solid rgba(245, 232, 184, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 28px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255,255,255,0.06);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.1);
     padding: 48px 52px 44px;
     text-align: center;
     max-width: 600px;
@@ -2093,4 +2093,81 @@ footer {
     display: block;
     width: 100%;
     height: auto;
+}
+
+/* =========================
+   MUSIC PLAYER WIDGET
+========================= */
+.music-player {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 6px 16px 6px 6px;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.music-player:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.music-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--goa-yellow);
+    color: var(--goa-dark);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--goa-cream);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .music-player {
+        bottom: 16px;
+        right: 16px;
+        padding: 4px 12px 4px 4px;
+    }
+    .music-toggle {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .music-name {
+        font-size: 9px;
+    }
 }

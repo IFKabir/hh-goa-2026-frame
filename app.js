@@ -259,23 +259,23 @@
 
   // FORMAT A (Square PFP Frame)
   function renderFormatA(S, _S){
-    // Background: Deep Forest Green
-    ctx.fillStyle = '#0a3a20';
+    // Background: Dark Gray/Black
+    ctx.fillStyle = '#111111';
     ctx.fillRect(0,0,S,S);
 
     // Decorative Borders
-    ctx.strokeStyle = '#FFC700';
+    ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 12;
     roundRect(ctx, 24, 24, S-48, S-48, 40);
     ctx.stroke();
 
-    ctx.strokeStyle = '#FF297F';
+    ctx.strokeStyle = '#a3a3a3';
     ctx.lineWidth = 4;
     roundRect(ctx, 44, 44, S-88, S-88, 30);
     ctx.stroke();
 
     // Corner Accents
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     [44, S-44].forEach(x => {
       [44, S-44].forEach(y => {
         ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI*2); ctx.fill();
@@ -289,30 +289,30 @@
     ctx.save();
     const ringW = 16;
     ctx.lineWidth = ringW;
-    ctx.strokeStyle = '#FF297F';
+    ctx.strokeStyle = '#a3a3a3';
     ctx.beginPath();
     ctx.arc(S/2, S/2, S*0.38 + ringW/2, 0, Math.PI*2);
     ctx.stroke();
     
-    // Inner yellow ring
+    // Inner white ring
     ctx.lineWidth = 4;
-    ctx.strokeStyle = '#FFC700';
+    ctx.strokeStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(S/2, S/2, S*0.38 - 8, 0, Math.PI*2);
     ctx.stroke();
     ctx.restore();
 
     // Top Header: HACKER HOUSE
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
     ctx.font = `800 ${S*0.1}px 'Cinzel', 'Yatra One', serif`;
     ctx.fillText('HACKER HOUSE', S/2, S*0.18);
 
-    // Pink Goa Pill (Top Rightish)
-    ctx.fillStyle = '#FF297F';
+    // Pill (Top Rightish)
+    ctx.fillStyle = '#333333';
     roundRect(ctx, S*0.75, S*0.11, 140, 50, 15);
     ctx.fill();
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.font = `800 24px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText("गोवा", S*0.75 + 70, S*0.11 + 32);
 
@@ -322,7 +322,7 @@
     ctx.fillText('GOA 2026', S/2, S*0.88);
 
     // Subtitle
-    ctx.fillStyle = '#b3d9c1';
+    ctx.fillStyle = '#cccccc';
     ctx.font = `600 ${S*0.025}px 'Plus Jakarta Sans', sans-serif`;
     ctx.letterSpacing = "4px";
     ctx.fillText('LESS NOISE • MORE SIGNAL', S/2, S*0.93);
@@ -333,19 +333,19 @@
   function renderFormatB(W, H){
     ctx.save();
     
-    // Deep Green Background
-    ctx.fillStyle = '#062615';
+    // Deep Background
+    ctx.fillStyle = '#0a0a0a';
     ctx.fillRect(0,0,W,H);
 
     // Decorative Top/Bottom Borders
-    ctx.fillStyle = '#FF297F';
+    ctx.fillStyle = '#4d4d4d';
     for(let i=0; i<W; i+=30) {
       ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i+15, 10); ctx.lineTo(i+30, 0); ctx.fill();
       ctx.beginPath(); ctx.moveTo(i, H); ctx.lineTo(i+15, H-10); ctx.lineTo(i+30, H); ctx.fill();
     }
 
     // Main Inner Border
-    ctx.strokeStyle = '#FFC700';
+    ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 2;
     roundRect(ctx, 16, 16, W-32, H-32, 16);
     ctx.stroke();
@@ -355,22 +355,22 @@
     ctx.stroke();
 
     // Wordmark: HACKER HOUSE
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'alphabetic';
     ctx.font = `800 68px 'Cinzel', 'Yatra One', serif`;
     ctx.fillText('HACKER HOUSE', 48, 96);
     
-    // Pink Goa Badge overlapping wordmark
-    ctx.fillStyle = '#FF297F';
+    // Badge overlapping wordmark
+    ctx.fillStyle = '#333333';
     roundRect(ctx, 330, 50, 70, 36, 10);
     ctx.fill();
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.font = `800 18px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText("गोवा", 345, 75);
 
     // Subtitle
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.font = `700 14px 'Space Mono', monospace`;
     ctx.fillText('GOA, INDIA  •  28 - 31 OCT 2026', 130, 120);
 
@@ -378,7 +378,7 @@
     ctx.save();
     ctx.translate(32, H/2 + 100);
     ctx.rotate(-Math.PI/2);
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.font = `600 14px 'Space Mono', monospace`;
     ctx.fillText('• BUILD • HACK • SHIP • CONNECT •', 0, 0);
     ctx.restore();
@@ -389,20 +389,20 @@
 
     // Photo Box Borders
     ctx.lineWidth = 3;
-    ctx.strokeStyle = '#FF297F';
+    ctx.strokeStyle = '#4d4d4d';
     roundRect(ctx, px-6, py-6, pw+12, ph+12, 22);
     ctx.stroke();
-    ctx.strokeStyle = '#FFC700';
+    ctx.strokeStyle = '#ffffff';
     roundRect(ctx, px-2, py-2, pw+4, ph+4, 18);
     ctx.stroke();
 
     // Photo Bottom Logo (HH)
     const logoR = 40;
-    ctx.fillStyle = '#062615';
+    ctx.fillStyle = '#0a0a0a';
     ctx.beginPath(); ctx.arc(px + pw/2, py + ph, logoR, 0, Math.PI*2); ctx.fill();
-    ctx.strokeStyle = '#FFC700';
+    ctx.strokeStyle = '#ffffff';
     ctx.beginPath(); ctx.arc(px + pw/2, py + ph, logoR, 0, Math.PI*2); ctx.stroke();
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.font = `800 28px 'Cinzel', serif`;
@@ -410,11 +410,11 @@
 
     // Under Photo Text
     ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'left';
     ctx.font = `700 16px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText("YOU'RE INSIDE THE ROOM.", 120, 650);
-    ctx.fillStyle = '#b3d9c1';
+    ctx.fillStyle = '#cccccc';
     ctx.font = `400 14px 'Space Mono', monospace`;
     ctx.fillText("4 DAYS. ONE RHYTHM.", 120, 675);
     ctx.fillText("EVERYTHING INTENTIONAL.", 120, 700);
@@ -434,17 +434,17 @@
     ctx.save();
     ctx.translate(920, 100);
     ctx.rotate(10 * Math.PI / 180);
-    ctx.strokeStyle = '#8bc34a';
+    ctx.strokeStyle = '#7a7a7a';
     ctx.lineWidth = 4;
     ctx.setLineDash([8, 6]);
     roundRect(ctx, -50, -60, 100, 120, 10);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#FF297F';
+    ctx.fillStyle = '#4d4d4d';
     ctx.textAlign = 'center';
     ctx.font = `800 24px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText('GOA', 0, -20);
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.fillText('2026 ✈', 0, 40);
     ctx.restore();
     
@@ -463,12 +463,12 @@
     const bId = idEl ? idEl.value.trim() : generatedId;
 
     const fields = [
-      { label: 'BUILDER ID', value: bId, color: '#FFC700', iconCol: '#00c2a8', y: 188 },
-      { label: 'NAME', value: name || 'YOUR NAME', color: '#ffffff', iconCol: '#FF297F', y: 256 },
-      { label: 'ROLE', value: role || 'YOUR ROLE', color: '#FF297F', iconCol: '#FFC700', y: 323 },
-      { label: 'STACK', value: stack || 'HTML/CSS/JS', color: '#ffffff', iconCol: '#8bc34a', y: 390 },
-      { label: 'TEAM NAME', value: team || 'SOLO BUILDER', color: '#ffffff', iconCol: '#b4a2e5', y: 457 },
-      { label: 'BUILDER CLASS', value: bClass, color: '#FF297F', iconCol: '#FFC700', y: 525 }
+      { label: 'BUILDER ID', value: bId, color: '#ffffff', iconCol: '#ffffff', y: 188 },
+      { label: 'NAME', value: name || 'YOUR NAME', color: '#ffffff', iconCol: '#cccccc', y: 256 },
+      { label: 'ROLE', value: role || 'YOUR ROLE', color: '#cccccc', iconCol: '#a3a3a3', y: 323 },
+      { label: 'STACK', value: stack || 'HTML/CSS/JS', color: '#ffffff', iconCol: '#7a7a7a', y: 390 },
+      { label: 'TEAM NAME', value: team || 'SOLO BUILDER', color: '#ffffff', iconCol: '#5c5c5c', y: 457 },
+      { label: 'BUILDER CLASS', value: bClass, color: '#cccccc', iconCol: '#cccccc', y: 525 }
     ];
 
     ctx.textAlign = 'left';
@@ -486,7 +486,7 @@
       ctx.beginPath(); ctx.arc(rx-40, f.y, 6, 0, Math.PI*2); ctx.fill();
       
       // Label
-      ctx.fillStyle = '#b3d9c1';
+      ctx.fillStyle = '#cccccc';
       ctx.font = `600 12px 'Plus Jakarta Sans', sans-serif`;
       ctx.fillText(f.label, rx, f.y - 25);
       
@@ -506,11 +506,11 @@
     // Circular Stamp
     ctx.save();
     ctx.translate(880, 680);
-    ctx.strokeStyle = '#FFC700';
+    ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 2;
     ctx.beginPath(); ctx.arc(0,0, 50, 0, Math.PI*2); ctx.stroke();
     ctx.beginPath(); ctx.arc(0,0, 42, 0, Math.PI*2); ctx.stroke();
-    ctx.fillStyle = '#FF297F';
+    ctx.fillStyle = '#a3a3a3';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.font = `600 12px 'Space Mono', monospace`;
@@ -520,17 +520,17 @@
 
     // Ticket Stub Bottom Right
     const stubX = 460, stubY = 620, stubW = 340, stubH = 100;
-    ctx.strokeStyle = '#00c2a8';
+    ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 2;
     roundRect(ctx, stubX, stubY, stubW, stubH, 12);
     ctx.stroke();
     
     ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#FF297F';
+    ctx.fillStyle = '#cccccc';
     ctx.textAlign = 'left';
     ctx.font = `700 16px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText('ENTER THE HOUSE.', stubX + 20, stubY + 30);
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.fillText('LEAVE YOUR MARK.', stubX + 20, stubY + 55);
     
     // Vertical separator
@@ -539,16 +539,16 @@
     ctx.save();
     ctx.translate(stubX + 200, stubY + stubH/2 + 30);
     ctx.rotate(-Math.PI/2);
-    ctx.fillStyle = '#00c2a8';
+    ctx.fillStyle = '#ffffff';
     ctx.font = `600 12px 'Space Mono', monospace`;
     ctx.fillText('PASS TYPE', 0, 0);
     ctx.restore();
 
-    ctx.fillStyle = '#FF297F';
+    ctx.fillStyle = '#cccccc';
     ctx.textAlign = 'left';
     ctx.font = `800 22px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText('BUILDER', stubX + 220, stubY + 35);
-    ctx.fillStyle = '#FFC700';
+    ctx.fillStyle = '#ffffff';
     ctx.font = `700 16px 'Plus Jakarta Sans', sans-serif`;
     ctx.fillText('ADMIT ONE  ✈', stubX + 220, stubY + 65);
 
