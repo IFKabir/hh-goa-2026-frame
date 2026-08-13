@@ -58,10 +58,21 @@ body {
     user-select: none;
     /* default fallback — individual fi-* classes override this */
     animation: floatDrift 10s ease-in-out infinite;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.float-star { font-size: 22px; color: rgba(255, 255, 255, 0.4); }
-.float-icon { font-size: 24px; opacity: 0.4; font-family: var(--font-mono); font-weight: 700; color: rgba(255, 255, 255, 0.6); }
+.float-item:hover {
+    animation-play-state: paused;
+    opacity: 1 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.6);
+    cursor: crosshair;
+    z-index: 100;
+}
+
+.float-star { font-size: 22px; color: rgba(255, 255, 255, 0.6); }
+.float-icon { font-size: 26px; opacity: 0.7; font-family: var(--font-mono); font-weight: 700; color: rgba(255, 255, 255, 0.85); }
 .float-dot {
     width: 6px;
     height: 6px;
